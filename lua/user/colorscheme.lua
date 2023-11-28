@@ -1,12 +1,15 @@
 local M = {
-    'Lunarvim/primer.nvim',
+    'navarasu/onedark.nvim',
     lazy = false,
     priority = 1000,
-    commit = "b8d7e08eed9a61eb2f49b9196b01f7f2932735ff",
 }
 
 function M.config()
-    vim.cmd.colorscheme('peachpuff')
+    -- vim.cmd.colorscheme('onedark')
+    require('onedark').setup {
+        style = 'darker'
+    }
+    require('onedark').load()
 end
 
 return M

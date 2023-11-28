@@ -50,7 +50,7 @@ function M.config()
     button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
   }
   local function footer()
-    return "chrisatmachine.com"
+    return "yusufbgirgin.netlify.app"
   end
 
   dashboard.section.footer.val = footer()
