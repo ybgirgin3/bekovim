@@ -40,10 +40,12 @@ function M.config()
         program = "${file}"; -- This configuration will launch the current file if used.
         args = function()
             local args_string = vim.fn.input("Input arguments: ")
-            return vim.split(args_string, " ")
-        end,        -- program = function ()
-        --     return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        -- end,
+            if args_string == '' then
+                return
+            else
+                return vim.split(args_string, " ")
+            end
+        end,
         pythonPath = function()
           -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
           -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
