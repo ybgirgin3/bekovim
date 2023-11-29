@@ -7,7 +7,7 @@ local M = {
 function M.config()
     -- vim.cmd.colorscheme('onedark')
     require('onedark').setup {
-        style = 'darker'
+        style = 'deep'
     }
     require('onedark').load()
 end
