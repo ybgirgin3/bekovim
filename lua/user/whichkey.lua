@@ -11,8 +11,9 @@ function M.config()
     ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
     ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
     b = {
-      name = "Buffers",
-      b = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
+      name = "Buffer",
+      B = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
+      b = {'<cmd>!black .<cr>', "Format Python File"}
     },
     d = {
       name = "Debug",
