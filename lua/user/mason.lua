@@ -7,18 +7,22 @@ local M = {
   },
 }
 
+local opts = {}
+
 M.servers = {
-  "lua_ls",
-  "cssls",
-  "html",
-  "tsserver",
-  "astro",
-  "pyright",
+  -- "lua_ls",
+  -- "cssls",
+  -- "html",
+  -- "tsserver",
+  -- "astro",
+  "pyright", -- lsp
+  -- "mypy", -- linter
+  -- "black", -- formatter
   "bashls",
   "jsonls",
   "yamlls",
   "marksman",
-  "tailwindcss",
+  -- "tailwindcss",
 }
 
 function M.config()
@@ -29,6 +33,7 @@ function M.config()
   }
   require("mason-lspconfig").setup {
     ensure_installed = M.servers,
+
   }
 end
 

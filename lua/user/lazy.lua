@@ -15,6 +15,7 @@ require("lazy").setup {
   spec = LAZY_PLUGIN_SPEC,
   install = {
     colorscheme = { "primer_dark", "habamax" },
+        -- colorscheme = 'solarized-okawa'
   },
   ui = {
     border = "rounded",
