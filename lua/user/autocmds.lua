@@ -59,3 +59,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.opt_local.spell = true
   end,
 })
+
+-- undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m]"]])
+vim.cmd([[let &t_Ce = "\e[4:0m]"]])
