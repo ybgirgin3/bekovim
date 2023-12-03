@@ -82,3 +82,14 @@ vim.api.nvim_create_autocmd({'VimLeave'}, {
         vim.cmd(":!tmux set-window-option automatic-rename on")
     end
 })
+
+-- colorscheme mods
+vim.api.nvim_create_autocmd({'BufReadPost', 'FileReadPost', 'BufNewFile', 'BufEnter', 'Colorscheme'}, {
+    pattern = { "*" },
+    callback = function ()
+        vim.api.nvim_set_hl(0, "Normal", { fg = "#ffffff", underline = false })
+        vim.api.nvim_set_hl(0, "Comment", { fg = "#4caf50", underline = false, bold = true })
+
+    end
+
+})
