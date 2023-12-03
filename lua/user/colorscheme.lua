@@ -11,10 +11,11 @@ local M = {
 }
 
 function M.config()
-    require('solarized-osaka').setup {
-        transparent = true
-    }
-    require('solarized-osaka').load()
+    vim.cmd.colorscheme('koehler')
+    -- require('solarized-osaka').setup {
+    --     -- transparent = true
+    -- }
+    -- require('solarized-osaka').load()
     -- vim.cmd.colorscheme('onedark')
     -- require('onedark').setup {
     --     style = 'deep'
