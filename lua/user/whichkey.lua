@@ -14,7 +14,8 @@ function M.config()
       name = "Buffer",
       B = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
       b = {'<cmd>!black .<cr>', "Format Python File"},
-      m = {'<cmd>!mypy .<cr>', "Fast Check Python File"}
+      m = {'<cmd>!mypy .<cr>', "Fast Check Python File"},
+      j = {"<cmd>%!jq '.'<cr>", "Fast Check Python File"}
     },
     d = {
       name = "Debug",
