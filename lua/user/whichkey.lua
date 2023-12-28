@@ -13,9 +13,10 @@ function M.config()
     b = {
       name = "Buffer",
       B = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
-      b = {'<cmd>!black .<cr>', "Format Python File"},
-      m = {'<cmd>!mypy .<cr>', "Fast Check Python File"},
-      j = {"<cmd>%!jq '.'<cr>", "Fast Check Python File"}
+      f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format Buffer" },
+      -- b = {'<cmd>!black .<cr>', "Format Python File"},
+      -- m = {'<cmd>!mypy .<cr>', "Fast Check Python File"},
+      -- j = {"<cmd>%!jq '.'<cr>", "Fast Check Python File"}
     },
     d = {
       name = "Debug",
