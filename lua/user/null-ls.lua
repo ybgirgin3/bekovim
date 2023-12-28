@@ -4,12 +4,18 @@ return {
 		local null_ls = require("null-ls")
 		null_ls.setup({
 			sources = {
+                -- others
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.prettier,
 
 				-- python
 				null_ls.builtins.formatting.black,
 				null_ls.builtins.formatting.isort,
+
+                -- go
+                null_ls.builtins.formatting.goimports,
+                null_ls.builtins.formatting.gofumpt,
+                null_ls.builtins.formatting.gofmt
 			},
 		})
 		vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format, {})
