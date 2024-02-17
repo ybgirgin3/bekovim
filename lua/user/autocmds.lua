@@ -93,3 +93,11 @@ vim.api.nvim_create_autocmd({'BufReadPost', 'FileReadPost', 'BufNewFile', 'BufEn
     end
 
 })
+
+-- gitsigns
+vim.api.nvim_create_autocmd({'VimEnter'}, {
+    pattern = {"*"},
+    callback = function ()
+        vim.cmd(":Gitsigns toggle_signs")
+    end
+})
