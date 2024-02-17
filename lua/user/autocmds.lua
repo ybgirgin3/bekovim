@@ -89,7 +89,6 @@ vim.api.nvim_create_autocmd({'BufReadPost', 'FileReadPost', 'BufNewFile', 'BufEn
     callback = function ()
         vim.api.nvim_set_hl(0, "Normal", { fg = "#ffffff", underline = false })
         vim.api.nvim_set_hl(0, "Comment", { fg = "#4caf50", underline = false, bold = true })
-
     end
 
 })
@@ -98,6 +97,6 @@ vim.api.nvim_create_autocmd({'BufReadPost', 'FileReadPost', 'BufNewFile', 'BufEn
 vim.api.nvim_create_autocmd({'VimEnter'}, {
     pattern = {"*"},
     callback = function ()
-        vim.cmd(":Gitsigns toggle_signs")
+        vim.cmd(":Gitsigns toggle_current_line_blame")
     end
 })
