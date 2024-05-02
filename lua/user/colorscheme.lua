@@ -40,7 +40,7 @@ function M.config()
 	-- require('onedark').load()
 
 	-- VSCODE
-	-- vim.cmd.colorscheme("visual_studio_code")
+-- vim.cmd.colorscheme("visual_studio_code")
 	-- require("visual_studio_code").setup({
 	-- 	-- `dark` or `light`
 	-- 	mode = "dark",

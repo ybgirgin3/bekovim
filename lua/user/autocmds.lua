@@ -100,3 +100,11 @@ vim.api.nvim_create_autocmd({'VimEnter'}, {
         vim.cmd(":Gitsigns toggle_current_line_blame")
     end
 })
+
+-- symbols-outline
+vim.api.nvim_create_autocmd({'VimEnter'}, {
+    pattern = {"*"},
+    callback = function ()
+        vim.cmd(":SymbolsOutline")
+    end
+})
