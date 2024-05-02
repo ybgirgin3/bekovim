@@ -34,7 +34,13 @@ function M.config()
         "--hidden",
         "--glob=!.git/",
       },
-
+        file_ignore_patterns = {
+        "^.git/*",
+        "node_modules/*",
+        ".mypy_cache/*",
+        "venv",                 
+        ".venv",                 
+        },    
       mappings = {
         i = {
           ["<C-n>"] = actions.cycle_history_next,
@@ -53,16 +59,19 @@ function M.config()
     },
     pickers = {
       live_grep = {
-        theme = "dropdown",
+        -- theme = "dropdown",
+        hidden = true
       },
 
       grep_string = {
-        theme = "dropdown",
+        -- theme = "dropdown",
+        hidden = true
       },
 
       find_files = {
-        theme = "dropdown",
-        previewer = false,
+        -- theme = "dropdown",
+        -- previewer = false,
+        hidden = true
       },
 
       buffers = {
