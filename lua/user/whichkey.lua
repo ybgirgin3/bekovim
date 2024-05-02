@@ -10,11 +10,19 @@ function M.config()
     ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
     ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
     ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
+    s = {
+            name = "Spectre (find and replace)",
+            S = {"<cmd>lua require('spectre').toggle()<CR>", "Toggle Spectre"},
+            W = {"<cmd>lua require('spectre').open_visual({select_word=true})<CR>", "Search Current Word"},
+
+        },
+
+
     b = {
       name = "Buffer",
       B = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
       f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format Buffer" },
-      -- b = {'<cmd>!black .<cr>', "Format Python File"},
+      b = {'<cmd>!black .<cr>', "Format Python File"},
       -- m = {'<cmd>!mypy .<cr>', "Fast Check Python File"},
       -- j = {"<cmd>%!jq '.'<cr>", "Fast Check Python File"}
     },
@@ -26,7 +34,7 @@ function M.config()
       C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
       d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
       g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
-      i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
+      i = { "<cmd>lua require'dap'.tep_into()<cr>", "Step Into" },
       o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
       u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
       p = { "<cmd>lua require'dap'.pause()<cr>", "Pause" },
