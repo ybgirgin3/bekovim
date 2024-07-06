@@ -6,6 +6,7 @@ local M = {
 
 function M.config()
   local mappings = {
+    ["w"] = { "<cmd>w!<CR>", "Save" },
     ["q"] = { "<cmd>confirm q<CR>", "Quit" },
     ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
     ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
