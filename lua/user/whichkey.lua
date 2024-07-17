@@ -12,7 +12,7 @@ function M.config()
 		["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 		["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
 		["z"] = { "<cmd>ZenMode<CR>", "ZenMode" },
-        ["o"] = {"<cmd>:SymbolsOutline<CR>", "Open Symbols"},
+		["o"] = { "<cmd>:SymbolsOutline<CR>", "Open Symbols" },
 
 		s = {
 			name = "Spectre (find and replace)",
@@ -149,6 +149,12 @@ function M.config()
 			name = "Treesitter",
 			i = { ":TSConfigInfo<cr>", "Info" },
 		},
+
+        v = {
+            name = 'Virtualenv Selector',
+            c = {'<cmd>VenvSelectCached<cr>', 'select cached'},
+            s = {'<cmd>VenvSelect<cr>', 'select env'}
+        }
 	}
 
 	local opts = {
