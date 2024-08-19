@@ -66,23 +66,23 @@ vim.cmd([[let &t_Cs = "\e[4:3m]"]])
 vim.cmd([[let &t_Ce = "\e[4:0m]"]])
 
 
--- update tmux tab name
-vim.api.nvim_create_autocmd({'BufReadPost', 'FileReadPost', 'BufNewFile', 'BufEnter'}, {
-    pattern = { "*" },
-    callback = function ()
-        vim.cmd(':silent !tmux rename-window bekovim_' .. vim.fn.expand('%:t'))
-        -- vim.cmd(string.format(':silent !tmux rename-window (%s)'), vim.fn.expand('%:t'))
-    end
-})
-
--- rename to default after leave vim
-vim.api.nvim_create_autocmd({'VimLeave'}, {
-    pattern = { "*" },
-    callback = function ()
-        vim.cmd(":!tmux set-window-option automatic-rename on")
-    end
-})
-
+-- -- update tmux tab name
+-- vim.api.nvim_create_autocmd({'BufReadPost', 'FileReadPost', 'BufNewFile', 'BufEnter'}, {
+--     pattern = { "*" },
+--     callback = function ()
+--         vim.cmd(':silent !tmux rename-window bekovim_' .. vim.fn.expand('%:t'))
+--         -- vim.cmd(string.format(':silent !tmux rename-window (%s)'), vim.fn.expand('%:t'))
+--     end
+-- })
+--
+-- -- rename to default after leave vim
+-- vim.api.nvim_create_autocmd({'VimLeave'}, {
+--     pattern = { "*" },
+--     callback = function ()
+--         vim.cmd(":!tmux set-window-option automatic-rename on")
+--     end
+-- })
+--
 -- colorscheme mods
 vim.api.nvim_create_autocmd({'BufReadPost', 'FileReadPost', 'BufNewFile', 'BufEnter', 'Colorscheme'}, {
     pattern = { "*" },
