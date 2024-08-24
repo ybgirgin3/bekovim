@@ -23,70 +23,41 @@ function M.config()
 		dapui.close()
 	end
 
-	local function get_python_path()
-		local venv_path = os.getenv("VIRTUAL_ENV")
-		if venv_path then
-			return venv_path .. "/bin/python"
-		end
+	dap.adapters.python = {
+		type = "executable",
+		command = os.getenv("VIRTUAL_ENV") .. "/bin/python",
+		args = { "-m", "debugpy.adapter" },
+	}
 
-		return vim.fn.exepath("python3") or vim.fn.exepath("python")
-	end
+	dap.configurations.python = {
+		{
+			-- The first three options are required by nvim-dap
+			type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
+			request = "launch",
+			name = "Launch file",
+			-- cwd = "/path/to/repository/root/dir", --python is executed from this directory
+			cwd = vim.fn.getcwd(),
 
-	-- launch.json dosyasını okuma
-	local function read_launch_json()
-		local path = ".vscode/launch.json"
-		local file = io.open(path, "r")
-		if file then
-			local content = file:read("*a")
-			file:close()
-			local json = vim.fn.json_decode(content)
-			return json
-		else
-			return nil
-		end
-	end
+			-- cwd = function()
+			-- 	return util.root_pattern("pyproject.toml")(vim.fn.getcwd())
+			-- end,
 
-	-- launch.json'dan DAP yapılandırmalarını ayarlama
-	local function setup_python_dap()
-		local launch_config = read_launch_json()
-		if launch_config and launch_config.configurations then
-			for _, config in ipairs(launch_config.configurations) do
-				if config.type == "python" then
-					-- dap.configurations.python ayarlarını yapılandır
-					table.insert(dap.configurations.python, {
-						type = config.type,
-						request = config.request,
-						name = config.name,
-						program = config.program,
-						console = config.console or "integratedTerminal",
-						args = config.args or {},
-					})
-
-					-- Eğer `pythonPath` gibi bir ayar varsa, dap.adapters.python'a ekle
-					if config.pythonPath then
-                        print('python config is exists')
-						dap.adapters.python = {
-							type = "executable",
-							command = config.pythonPath, -- launch.json'daki pythonPath kullanılır
-							args = { "-m", "debugpy.adapter" },
-						}
-					else
-						-- pythonPath yoksa, sistemdeki varsayılan Python yorumlayıcısını kullan
-                        print('no python path')
-						dap.adapters.python = {
-							type = "executable",
-							command = get_python_path(),
-							args = { "-m", "debugpy.adapter" },
-						}
-					end
+			program = "test.py", -- This configuration will launch the current file if used.
+			pythonPath = function()
+				-- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+				-- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+				-- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+				local cwd = vim.fn.getcwd()
+				if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
+					return cwd .. "/venv/bin/python"
+				elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+					return cwd .. "/.venv/bin/python"
+				else
+					return "/usr/bin/python"
 				end
-			end
-		else
-			print("launch.json bulunamadı veya geçerli bir Python yapılandırması yok.")
-		end
-	end
-
-	setup_python_dap()
+			end,
+		},
+	}
 
 	dap.adapters.go = function(callback, config)
 		local handle
